@@ -57,7 +57,7 @@
 
 	var Main = __webpack_require__(216);
 	var Timezone = __webpack_require__(218);
-	var About = __webpack_require__(219);
+	var About = __webpack_require__(221);
 
 	ReactDOM.render(React.createElement(
 	  Router,
@@ -24920,15 +24920,23 @@
 	'use strict';
 
 	var React = __webpack_require__(1);
+	var TimeForm = __webpack_require__(219);
+	var TimeMessage = __webpack_require__(220);
 
 	var Timezone = React.createClass({
 	  displayName: 'Timezone',
 
 	  render: function render() {
 	    return React.createElement(
-	      'h3',
+	      'div',
 	      null,
-	      ' Timezone Component '
+	      React.createElement(
+	        'h3',
+	        null,
+	        ' Timezone Component '
+	      ),
+	      React.createElement(TimeForm, null),
+	      React.createElement(TimeMessage, null)
 	    );
 	  }
 	});
@@ -24937,6 +24945,59 @@
 
 /***/ },
 /* 219 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+
+	var React = __webpack_require__(1);
+
+	var TimeForm = React.createClass({
+	  displayName: "TimeForm",
+
+	  render: function render() {
+	    return React.createElement(
+	      "div",
+	      null,
+	      React.createElement(
+	        "form",
+	        null,
+	        React.createElement("input", { type: "text" }),
+	        React.createElement(
+	          "button",
+	          null,
+	          "Get Time"
+	        )
+	      )
+	    );
+	  }
+	});
+
+	module.exports = TimeForm;
+
+/***/ },
+/* 220 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var React = __webpack_require__(1);
+
+	var TimeMessage = React.createClass({
+	  displayName: 'TimeMessage',
+
+	  render: function render() {
+	    return React.createElement(
+	      'h3',
+	      null,
+	      'It\'s 10:00 in Sydney.'
+	    );
+	  }
+	});
+
+	module.exports = TimeMessage;
+
+/***/ },
+/* 221 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';

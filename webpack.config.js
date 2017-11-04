@@ -10,7 +10,9 @@ module.exports = {
       Main: 'app/components/Main.jsx',
       Nav: 'app/components/Nav.jsx',
       Timezone: 'app/components/Timezone.jsx',
-      About: 'app/components/About.jsx'    
+      TimeForm: 'app/components/TimeForm.jsx',
+      TimeMessage: 'app/components/TimeMessage.jsx',
+      About: 'app/components/About.jsx'
     },
     extensions: ['', '.js', '.jsx']
   },
