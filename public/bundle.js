@@ -24926,7 +24926,27 @@
 	var Timezone = React.createClass({
 	  displayName: 'Timezone',
 
+	  getInitialState: function getInitialState() {
+	    return {
+	      location: 'Miami',
+	      hours: 10,
+	      minutes: 50
+	    };
+	  },
+	  handleSearch: function handleSearch(location) {
+	    this.setState({
+	      location: location,
+	      hours: 3,
+	      minutes: 30
+	    });
+	  },
 	  render: function render() {
+	    var _state = this.state,
+	        hours = _state.hours,
+	        minutes = _state.minutes,
+	        location = _state.location;
+
+
 	    return React.createElement(
 	      'div',
 	      null,
@@ -24935,8 +24955,8 @@
 	        null,
 	        ' Timezone Component '
 	      ),
-	      React.createElement(TimeForm, null),
-	      React.createElement(TimeMessage, null)
+	      React.createElement(TimeForm, { onSearch: this.handleSearch }),
+	      React.createElement(TimeMessage, { hours: hours, minutes: minutes, location: location })
 	    );
 	  }
 	});
@@ -24947,25 +24967,36 @@
 /* 219 */
 /***/ function(module, exports, __webpack_require__) {
 
-	"use strict";
+	'use strict';
 
 	var React = __webpack_require__(1);
 
 	var TimeForm = React.createClass({
-	  displayName: "TimeForm",
+	  displayName: 'TimeForm',
 
+
+	  onFormSubmit: function onFormSubmit(e) {
+	    e.preventDefault();
+
+	    var location = this.refs.location.value;
+
+	    if (location.length > 0) {
+	      this.refs.location.value = '';
+	      this.props.onSearch(location);
+	    }
+	  },
 	  render: function render() {
 	    return React.createElement(
-	      "div",
+	      'div',
 	      null,
 	      React.createElement(
-	        "form",
-	        null,
-	        React.createElement("input", { type: "text" }),
+	        'form',
+	        { onSubmit: this.onFormSubmit },
+	        React.createElement('input', { type: 'text', ref: 'location' }),
 	        React.createElement(
-	          "button",
+	          'button',
 	          null,
-	          "Get Time"
+	          'Get Weather'
 	        )
 	      )
 	    );
@@ -24986,10 +25017,21 @@
 	  displayName: 'TimeMessage',
 
 	  render: function render() {
+	    var _props = this.props,
+	        hours = _props.hours,
+	        minutes = _props.minutes,
+	        location = _props.location;
+
 	    return React.createElement(
 	      'h3',
 	      null,
-	      'It\'s 10:00 in Sydney.'
+	      'It\'s ',
+	      hours,
+	      ':',
+	      minutes,
+	      ' in ',
+	      location,
+	      '.'
 	    );
 	  }
 	});
