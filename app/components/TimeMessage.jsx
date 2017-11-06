@@ -3,9 +3,9 @@ var React = require('react');
 var TimeMessage = React.createClass({
   render: function(){
 
-    var {hours, minutes, location} = this.props;
+    var {datetime, location} = this.props;
     return(
-      <h3>It's {hours}:{minutes} in {location}.</h3>
+      <h3>It's {datetime} in {location}.</h3>
     );
   }
 });

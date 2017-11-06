@@ -12,7 +12,8 @@ module.exports = {
       Timezone: 'app/components/Timezone.jsx',
       TimeForm: 'app/components/TimeForm.jsx',
       TimeMessage: 'app/components/TimeMessage.jsx',
-      About: 'app/components/About.jsx'
+      About: 'app/components/About.jsx',
+      openTimezone: 'app/api/openTimezone.jsx'
     },
     extensions: ['', '.js', '.jsx']
   },
