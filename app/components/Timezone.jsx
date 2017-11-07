@@ -6,38 +6,42 @@ var openTimezone = require('openTimezone');
 var Timezone = React.createClass({
   getInitialState: function () {
     return {
-        location: 'Miami',
-        datetime: '2017-11-06 10:50'
-        // hours: 10,
-        // minutes: 50
+        isLoading: false
     }
   },
   handleSearch: function (location) {
     var that = this;
 
+    this.setState({isLoading: true});
+
     openTimezone.getTemp(location).then(function(localTime){
       that.setState({
         location: location,
-        datetime: localTime
+        datetime: localTime,
+        isLoading: false
       });
 
     }, function(errorMessage){
+      that.setState({isLoading: false});
       alert(errorMessage);
     });
-    // this.setState({
-    //   location: location,
-    //   hours: 3,
-    //   minutes: 30
-    // });
   },
   render: function(){
-    var {datetime, location} = this.state;
+    var {isLoading, datetime, location} = this.state;
+
+    function renderMessage () {
+      if (isLoading) {
+        return <h3>Fetching date and time</h3>;
+      } else if (datetime && location) {
+        return <TimeMessage datetime={datetime} location={location}/>;
+      }
+    }
 
     return(
       <div>
         <h3> Timezone Component </h3>
         <TimeForm onSearch={this.handleSearch}/>
-        <TimeMessage datetime={datetime} location={location}/>
+        {renderMessage()}
       </div>
     )
   }
