@@ -25,3 +25,5 @@ var TimeForm = React.createClass({
 });
 
 module.exports = TimeForm;
+
+// type="button" className="btn btn-success"
