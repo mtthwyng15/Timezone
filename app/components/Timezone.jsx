@@ -31,7 +31,7 @@ var Timezone = React.createClass({
 
     function renderMessage () {
       if (isLoading) {
-        return <h3>Fetching date and time</h3>;
+        return <h3 className="text-center">Fetching date and time</h3>;
       } else if (datetime && location) {
         return <TimeMessage datetime={datetime} location={location}/>;
       }
@@ -39,7 +39,7 @@ var Timezone = React.createClass({
 
     return(
       <div>
-        <h3> Timezone Component </h3>
+        <h1 className="text-center"> Get Timezone </h1>
         <TimeForm onSearch={this.handleSearch}/>
         {renderMessage()}
       </div>

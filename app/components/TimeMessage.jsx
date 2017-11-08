@@ -5,7 +5,7 @@ var TimeMessage = React.createClass({
 
     var {datetime, location} = this.props;
     return(
-      <h3>It's {datetime} in {location}.</h3>
+      <h3 className="text-center">It's {datetime} in {location}.</h3>
     );
   }
 });

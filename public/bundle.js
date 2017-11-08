@@ -24920,11 +24920,14 @@
 	      null,
 	      React.createElement(Nav, null),
 	      React.createElement(
-	        'h2',
-	        null,
-	        ' Main Component '
-	      ),
-	      this.props.children
+	        'div',
+	        { className: 'row' },
+	        React.createElement(
+	          'div',
+	          { className: 'columns medium-6 large-4 small-centered' },
+	          this.props.children
+	        )
+	      )
 	    );
 	  }
 	});
@@ -24946,24 +24949,66 @@
 	var Nav = React.createClass({
 	  displayName: 'Nav',
 
+	  onSearch: function onSearch(e) {
+	    e.preventDefault();
+	    alert("not yet wired");
+	  },
 	  render: function render() {
 	    return React.createElement(
 	      'div',
-	      null,
+	      { className: 'top-bar' },
 	      React.createElement(
-	        'h2',
-	        null,
-	        ' Nav Component '
+	        'div',
+	        { className: 'top-bar-left' },
+	        React.createElement(
+	          'ul',
+	          { className: 'menu' },
+	          React.createElement(
+	            'li',
+	            { className: 'menu-text' },
+	            ' Timezone App '
+	          ),
+	          React.createElement(
+	            'li',
+	            null,
+	            React.createElement(
+	              IndexLink,
+	              { to: '/', activeClassName: 'active', activeStyle: { fontWeight: 'bold' } },
+	              ' Timezone '
+	            )
+	          ),
+	          React.createElement(
+	            'li',
+	            null,
+	            React.createElement(
+	              Link,
+	              { to: '/about', activeClassName: 'active', activeStyle: { fontWeight: 'bold' } },
+	              ' About '
+	            )
+	          )
+	        )
 	      ),
 	      React.createElement(
-	        IndexLink,
-	        { to: '/', activeClassName: 'active', activeStyle: { fontWeight: 'bold' } },
-	        ' Timezone '
-	      ),
-	      React.createElement(
-	        Link,
-	        { to: '/about', activeClassName: 'active', activeStyle: { fontWeight: 'bold' } },
-	        ' About '
+	        'div',
+	        { className: 'top-bar-right' },
+	        React.createElement(
+	          'form',
+	          { onSubmit: this.onSearch },
+	          React.createElement(
+	            'ul',
+	            { className: 'menu' },
+	            React.createElement(
+	              'li',
+	              null,
+	              React.createElement('input', { type: 'search', placeholder: 'Search City' })
+	            ),
+	            React.createElement(
+	              'li',
+	              null,
+	              React.createElement('input', { type: 'submit', className: 'button', value: 'Get Timezone' })
+	            )
+	          )
+	        )
 	      )
 	    );
 	  }
@@ -25017,7 +25062,7 @@
 	      if (isLoading) {
 	        return React.createElement(
 	          'h3',
-	          null,
+	          { className: 'text-center' },
 	          'Fetching date and time'
 	        );
 	      } else if (datetime && location) {
@@ -25029,9 +25074,9 @@
 	      'div',
 	      null,
 	      React.createElement(
-	        'h3',
-	        null,
-	        ' Timezone Component '
+	        'h1',
+	        { className: 'text-center' },
+	        ' Get Timezone '
 	      ),
 	      React.createElement(TimeForm, { onSearch: this.handleSearch }),
 	      renderMessage()
@@ -25070,10 +25115,10 @@
 	      React.createElement(
 	        'form',
 	        { onSubmit: this.onFormSubmit },
-	        React.createElement('input', { type: 'text', ref: 'location' }),
+	        React.createElement('input', { type: 'text', ref: 'location', placeholder: 'Enter a City' }),
 	        React.createElement(
 	          'button',
-	          null,
+	          { className: 'button expanded' },
 	          'Get Weather'
 	        )
 	      )
@@ -25089,12 +25134,12 @@
 /* 227 */
 /***/ function(module, exports, __webpack_require__) {
 
-	'use strict';
+	"use strict";
 
 	var React = __webpack_require__(8);
 
 	var TimeMessage = React.createClass({
-	  displayName: 'TimeMessage',
+	  displayName: "TimeMessage",
 
 	  render: function render() {
 	    var _props = this.props,
@@ -25102,13 +25147,13 @@
 	        location = _props.location;
 
 	    return React.createElement(
-	      'h3',
-	      null,
-	      'It\'s ',
+	      "h3",
+	      { className: "text-center" },
+	      "It's ",
 	      datetime,
-	      ' in ',
+	      " in ",
 	      location,
-	      '.'
+	      "."
 	    );
 	  }
 	});
@@ -26694,18 +26739,18 @@
 /* 255 */
 /***/ function(module, exports, __webpack_require__) {
 
-	'use strict';
+	"use strict";
 
 	var React = __webpack_require__(8);
 
 	var About = React.createClass({
-	  displayName: 'About',
+	  displayName: "About",
 
 	  render: function render() {
 	    return React.createElement(
-	      'h3',
-	      null,
-	      ' About Component '
+	      "h3",
+	      { className: "text-center" },
+	      " About Page "
 	    );
 	  }
 	});
