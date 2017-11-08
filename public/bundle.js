@@ -25119,7 +25119,7 @@
 	        React.createElement(
 	          'button',
 	          { className: 'button expanded' },
-	          'Get Weather'
+	          ' Get Timezone '
 	        )
 	      )
 	    );
