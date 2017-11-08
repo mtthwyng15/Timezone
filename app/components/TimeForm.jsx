@@ -16,7 +16,7 @@ var TimeForm = React.createClass({
     return (
         <div>
           <form onSubmit={this.onFormSubmit}>
-            <input type="text" ref="location" placeholder="Enter a City"/>
+            <input type="search" ref="location" placeholder="Enter a City"/>
             <button className="button expanded"> Get Timezone </button>
           </form>
         </div>

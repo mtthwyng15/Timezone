@@ -39,7 +39,7 @@ var Timezone = React.createClass({
 
     return(
       <div>
-        <h1 className="text-center"> Get Timezone </h1>
+        <h1 className="text-center page-title" > Get Timezone </h1>
         <TimeForm onSearch={this.handleSearch}/>
         {renderMessage()}
       </div>
