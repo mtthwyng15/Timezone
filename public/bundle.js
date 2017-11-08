@@ -24953,7 +24953,14 @@
 
 	  onSearch: function onSearch(e) {
 	    e.preventDefault();
-	    alert("not yet wired");
+
+	    var location = this.refs.location.value;
+	    var encodedLocation = encodeURIComponent(location);
+
+	    if (location.length > 0) {
+	      this.refs.location.value = '';
+	      window.location.hash = '#/?location=' + encodedLocation;
+	    }
 	  },
 	  render: function render() {
 	    return React.createElement(
@@ -25002,7 +25009,7 @@
 	            React.createElement(
 	              'li',
 	              null,
-	              React.createElement('input', { type: 'search', placeholder: 'Enter a City' })
+	              React.createElement('input', { type: 'search', placeholder: 'Enter a City', ref: 'location' })
 	            ),
 	            React.createElement(
 	              'li',
@@ -25034,7 +25041,9 @@
 
 	  getInitialState: function getInitialState() {
 	    return {
-	      isLoading: false
+	      isLoading: false,
+	      location: undefined,
+	      datetime: undefined
 	    };
 	  },
 	  handleSearch: function handleSearch(location) {
@@ -25052,6 +25061,22 @@
 	      that.setState({ isLoading: false });
 	      alert(errorMessage);
 	    });
+	  },
+	  componentDidMount: function componentDidMount() {
+	    var location = this.props.location.query.location;
+
+	    if (location && location.length > 0) {
+	      this.handleSearch(location);
+	      window.location.hash = '#/';
+	    }
+	  },
+	  componentWillReceiveProps: function componentWillReceiveProps() {
+	    var location = newProps.location.query.location;
+
+	    if (location && location.length > 0) {
+	      this.handleSearch(location);
+	      window.location.hash = '#/';
+	    }
 	  },
 	  render: function render() {
 	    var _state = this.state,

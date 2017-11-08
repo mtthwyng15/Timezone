@@ -6,7 +6,9 @@ var openTimezone = require('openTimezone');
 var Timezone = React.createClass({
   getInitialState: function () {
     return {
-        isLoading: false
+        isLoading: false,
+        location: undefined,
+        datetime: undefined
     }
   },
   handleSearch: function (location) {
@@ -25,6 +27,22 @@ var Timezone = React.createClass({
       that.setState({isLoading: false});
       alert(errorMessage);
     });
+  },
+  componentDidMount: function(){
+    var location = this.props.location.query.location;
+
+    if(location && location.length >0){
+      this.handleSearch(location);
+      window.location.hash = '#/'
+    }
+  },
+  componentWillReceiveProps: function(){
+    var location = newProps.location.query.location;
+
+    if(location && location.length >0){
+      this.handleSearch(location);
+      window.location.hash = '#/'
+    }
   },
   render: function(){
     var {isLoading, datetime, location} = this.state;
