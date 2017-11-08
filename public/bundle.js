@@ -25041,15 +25041,17 @@
 
 	  getInitialState: function getInitialState() {
 	    return {
-	      isLoading: false,
-	      location: undefined,
-	      datetime: undefined
+	      isLoading: false
 	    };
 	  },
 	  handleSearch: function handleSearch(location) {
 	    var that = this;
 
-	    this.setState({ isLoading: true });
+	    this.setState({
+	      isLoading: true,
+	      location: undefined,
+	      datetime: undefined
+	    });
 
 	    openTimezone.getTemp(location).then(function (localTime) {
 	      that.setState({
@@ -25070,7 +25072,7 @@
 	      window.location.hash = '#/';
 	    }
 	  },
-	  componentWillReceiveProps: function componentWillReceiveProps() {
+	  componentWillReceiveProps: function componentWillReceiveProps(newProps) {
 	    var location = newProps.location.query.location;
 
 	    if (location && location.length > 0) {

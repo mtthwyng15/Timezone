@@ -7,14 +7,16 @@ var Timezone = React.createClass({
   getInitialState: function () {
     return {
         isLoading: false,
-        location: undefined,
-        datetime: undefined
     }
   },
   handleSearch: function (location) {
     var that = this;
 
-    this.setState({isLoading: true});
+    this.setState({
+      isLoading: true,
+      location: undefined,
+      datetime: undefined
+    });
 
     openTimezone.getTemp(location).then(function(localTime){
       that.setState({
@@ -28,20 +30,20 @@ var Timezone = React.createClass({
       alert(errorMessage);
     });
   },
-  componentDidMount: function(){
+  componentDidMount: function () {
     var location = this.props.location.query.location;
 
-    if(location && location.length >0){
+    if (location && location.length > 0) {
       this.handleSearch(location);
-      window.location.hash = '#/'
+      window.location.hash = '#/';
     }
   },
-  componentWillReceiveProps: function(){
+  componentWillReceiveProps: function (newProps) {
     var location = newProps.location.query.location;
 
-    if(location && location.length >0){
+    if (location && location.length > 0) {
       this.handleSearch(location);
-      window.location.hash = '#/'
+      window.location.hash = '#/';
     }
   },
   render: function(){
