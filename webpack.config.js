@@ -29,7 +29,7 @@ module.exports = {
       TimeMessage: 'app/components/TimeMessage.jsx',
       About: 'app/components/About.jsx',
       openTimezone: 'app/api/openTimezone.jsx',
-      applicationStyles: 'app/styles/app.css'
+      applicationStyles: 'app/styles/app.scss'
     },
     extensions: ['', '.js', '.jsx']
   },
